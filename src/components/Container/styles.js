@@ -63,4 +63,16 @@ export const ContainerS = styled.div`
     div{
 
     }
+    nav{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items:center;
+        align-content:center;
+    }
+    nav button{
+        width:55.5px;
+        height:32px;
+        
+    }
 `

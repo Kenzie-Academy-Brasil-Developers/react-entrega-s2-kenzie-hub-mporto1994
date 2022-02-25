@@ -1,11 +1,14 @@
 import axios from "axios"
-import { useForm } from "react-hook-form"
+import { useForm, useFormState } from "react-hook-form"
 import { Container } from "../../components/Container"
 import { RegisterDivS } from "./styles"
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Register = () => {
+const Register = ({auth}) => {
+    const history = useHistory()
+
     const schema = yup.object().shape({
         name: yup.string().required("Nome obrigatório"),
         email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -13,27 +16,21 @@ const Register = () => {
         passwordConfirm: yup.string().required("E-mail obrigatório"),
         course_module: yup.string().required("E-mail obrigatório")
     })
-    const {register,handleSubmit} = useForm({
+    const {register,handleSubmit, formState:{errors}}=useForm({
         resolver:yupResolver(schema)
     })
 
     const applyRegister = (data) =>{
         console.log(data)
-        axios.post('https://kenziehub.herokuapp.com/users',{
-            name:data.name,
-            contact:"something",
-            bio:"garbage",
-            password:data.password,
-            email:data.email,
-            course_module:data.course_module
-            }
+        const {name,password,email,course_module} = data
+        axios.post('https://kenziehub.herokuapp.com/users',{name,password,email,course_module,bio:"MyBio",contact:"/@MyContact"})
             .then((response)=>{
                 console.log(response)
             })
             .catch((err)=>{
                 console.log(err)
             })
-        )
+        history.push("/")
     }
 
 
