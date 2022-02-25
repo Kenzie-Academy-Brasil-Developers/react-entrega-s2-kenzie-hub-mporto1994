@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Redirect } from "react-router-dom"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom"
 import { AddTech } from "../../components/AddTech"
 import { ChangeTech } from "../../components/ChangeTech"
 import { Container } from "../../components/Container"

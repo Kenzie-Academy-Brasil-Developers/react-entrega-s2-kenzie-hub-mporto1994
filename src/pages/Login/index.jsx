@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom"
 import { Container } from "../../components/Container"
 import { LoginDivS } from "./styles"
 import axios from "axios"

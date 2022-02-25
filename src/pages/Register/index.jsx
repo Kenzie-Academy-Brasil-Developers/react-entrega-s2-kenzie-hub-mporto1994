@@ -4,7 +4,7 @@ import { Container } from "../../components/Container"
 import { RegisterDivS } from "./styles"
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const Register = ({auth}) => {
     const history = useHistory()
