@@ -46,7 +46,7 @@ export const AddTech = ({handleClose,open}) => {
         sx={{
           width:298,
           height:274,
-          display:flex,
+          
 
 
         }}
