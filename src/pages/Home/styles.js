@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const HomeS = styled.div`
     
+        /* opacity: ${(props)=>(props.tech?0.8:1)}; */
+        width:320px;
+    
+
+
     .TecnologiasDiv{
         background-color:var(--Grey-4);
         width:296px;
@@ -10,7 +15,7 @@ export const HomeS = styled.div`
     }
         header{
         display:flex;
-        padding:45px 0;
+        padding:45px 12px;
         border-top:1px solid var(--Grey-3);
         border-bottom:1px solid var(--Grey-3);
         /* flex-direction:row; */
@@ -19,6 +24,7 @@ export const HomeS = styled.div`
         h2{
             font-weight:700;
             font-size:18px;
+            padding-bottom:15px
         }
         p{
             color:var(--Grey-1);
@@ -49,17 +55,39 @@ export const HomeS = styled.div`
         background-color:var(--Grey-3);
         width:100%;
         height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:22px 0;
+        border-radius:4px;
+        button{
+            background-color:var(--Grey-4);
+            div{
+                display:flex;
+                flex-direction:row;
+                justify-content:space-between;
+                align-items:center;
+                padding:0 12px;
+
+            }
+            
+        }
+        button+button{
+            margin-top:16px;
+        }
     }
     .AddTechDiv{
         width:;
         height:;
         display:flex;
-        flex-direction:;
-        justify-content:;
-        align-items:;
+        
     }
     nav{
-        padding:26px 0 32px 0;
+        padding:26px 13px 32px 13px;
+        button{
+            background-color:var(--Grey-3)
+        }
     }
 
 `

@@ -17,6 +17,7 @@ export const ChangeTech = ({handleClose,open,tech}) => {
     const {register,handleSubmit, formState:{errors}}=useForm({})
     const [token]=useState(JSON.parse(localStorage.getItem("@Kenziehub:token")))
     const [userData]=useState(JSON.parse(localStorage.getItem("@Kenziehub:user")))
+    
     const changeTech = (data) => {
         console.log(data)
         axios.put(`https://kenziehub.herokuapp.com/users/techs/${tech.id}`,data, {headers: { Authorization: `Bearer ${token}` }})
@@ -29,6 +30,7 @@ export const ChangeTech = ({handleClose,open,tech}) => {
 
                 // setAuth(true);
                 // history.push("/home");
+                handleClose()
             })
             .catch((err)=>{
                 console.log(err)
@@ -46,6 +48,7 @@ export const ChangeTech = ({handleClose,open,tech}) => {
 
               // setAuth(true);
               // history.push("/home");
+              handleClose()
           })
           .catch((err)=>{
               console.log(err)
@@ -53,36 +56,28 @@ export const ChangeTech = ({handleClose,open,tech}) => {
   }
 
     return (
-
-
-    <ChangePopup>
-      <Dialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <div id="customized-dialog-title" onClose={handleClose}>
-          <p>Change Tech</p>
-          <Button autoFocus onClick={handleClose}>
-            x
-          </Button>
+      <>
+      <ChangePopup tech={open}>
+      <form onSubmit={handleSubmit(changeTech)}>
+        <div>
+          <h2>Cadastre sua tecnologia</h2>
+          <button className="close" onClick={()=>handleClose()}>x</button>
         </div>
-        <div >
-        <form onSubmit={handleSubmit(changeTech)}>
-                    <p>{tech.title}</p>
-                    <label htmlFor="">Status
-                        <select type="text" {...register("status")}>
-                            <option value="Iniciante">Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
-                        </select>
-                    </label>
-                    <button type="submit">Salvar Alterações</button>
-                    
-                </form><button onClick={()=>deleteTech()}>Excluir</button>
-        </div>
-      </Dialog>
-    </ChangePopup>
+        <p>{tech.title}</p>
+        <label htmlFor="">Status
+            <select type="text" {...register("status")}>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+            </select>
+        </label>
+        <button type="submit">Salvar Mudanças</button>
+        <button onClick={()=>deleteTech()}>Deletar</button>
+    </form>
+  </ChangePopup>
+
+    
+    </>
   );
 }
 

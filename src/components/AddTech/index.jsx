@@ -1,11 +1,4 @@
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
+
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
@@ -17,6 +10,7 @@ export const AddTech = ({handleClose,open}) => {
 
     const {register,handleSubmit, formState:{errors}}=useForm({})
     const [token]=useState(JSON.parse(localStorage.getItem("@Kenziehub:token")))
+    
     const createTech = (data) => {
         console.log(data)
         axios.post('https://kenziehub.herokuapp.com/users/techs',data, {headers: { Authorization: `Bearer ${token}` }})
@@ -29,6 +23,7 @@ export const AddTech = ({handleClose,open}) => {
 
                 // setAuth(true);
                 // history.push("/home");
+                handleClose()
             })
             .catch((err)=>{
                 console.log(err)
@@ -36,46 +31,25 @@ export const AddTech = ({handleClose,open}) => {
     }
 
     return (
-
-
-    // <AddPopup>
-      <Dialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-        sx={{
-          width:298,
-          height:274,
-          
-
-
-        }}
-      >
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Add Tech
-        </DialogTitle>
-        <DialogContent dividers>
-        <form onSubmit={handleSubmit(createTech)}>
-                    <label htmlFor="">Nome
-                        <input type="text" {...register("title")}/>
-                    </label>
-                    <label htmlFor="">Status
-                        <select type="text" {...register("status")}>
-                            <option value="Iniciante">Iniciante</option>
-                            <option value="Intermediário">Intermediário</option>
-                            <option value="Avançado">Avançado</option>
-                        </select>
-                    </label>
-                    <button type="submit">Criar</button>
-                </form>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-        </DialogActions>
-      </Dialog>
-    // </AddPopup>
+    <AddPopup tech={open}>
+      <form onSubmit={handleSubmit(createTech)}>
+        <div>
+          <h2>Cadastre sua tecnologia</h2>
+          <button className="close" onClick={()=>handleClose()}>x</button>
+        </div>
+        <label htmlFor="">Nome
+            <input type="text" {...register("title")}/>
+        </label>
+        <label htmlFor="">Status
+            <select type="text" {...register("status")}>
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+            </select>
+        </label>
+        <button type="submit">Criar</button>
+    </form>
+  </AddPopup>
   );
 }
 

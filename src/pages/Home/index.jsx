@@ -47,9 +47,10 @@ const Home = ({auth,setAuth}) => {
 
     return(
         <> 
-        <AddTech handleClose={()=>setAddTech(false)} open={addTech} />
-        <ChangeTech handleClose={()=>setChangeTech(false)} open={changeTech} tech={currentTech!=undefined?currentTech:{id:"",title:"",status:""}}/>
-        <HomeS> 
+        { addTech && <AddTech handleClose={()=>setAddTech(false)} open={addTech} />}
+        { changeTech && <ChangeTech handleClose={()=>setChangeTech(false)} open={changeTech} tech={ currentTech != undefined ? currentTech : {id:"",title:"",status:""}}/> }
+
+        <HomeS  tech={addTech}> 
             
             <Container>
                 <nav>
@@ -57,7 +58,7 @@ const Home = ({auth,setAuth}) => {
                     <button onClick={(()=>setAuth(false))}>Sair</button>
                 </nav>
                 <header>
-                    <h2>Ola Samuel</h2>
+                    <h2>Olá {userData.name}!</h2>
                     <p>Primeiro Modulo</p>
                 </header>
                 <div className="TecnologiasDiv">
