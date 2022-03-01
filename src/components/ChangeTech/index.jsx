@@ -59,22 +59,30 @@ export const ChangeTech = ({handleClose,open,tech}) => {
       <>
       <ChangePopup tech={open}>
       <form onSubmit={handleSubmit(changeTech)}>
-        <div>
-          <h2>Cadastre sua tecnologia</h2>
+        <div className='head'>
+          <h2>Tecnologia Detalhes</h2>
           <button className="close" onClick={()=>handleClose()}>x</button>
         </div>
-        <p>{tech.title}</p>
-        <label htmlFor="">Status
-            <select type="text" {...register("status")}>
-                <option value="Iniciante">Iniciante</option>
-                <option value="Intermediário">Intermediário</option>
-                <option value="Avançado">Avançado</option>
-            </select>
-        </label>
-        <button type="submit">Salvar Mudanças</button>
-        <button onClick={()=>deleteTech()}>Deletar</button>
-    </form>
-  </ChangePopup>
+        <div className='body'>
+          <div className='TechnoDiv'>
+            <h2>Tech</h2>
+            <p>{tech.title}</p> 
+          </div>
+          
+          <label htmlFor="">Status
+              <select type="text" {...register("status")}>
+                  <option value="Iniciante">Iniciante</option>
+                  <option value="Intermediário">Intermediário</option>
+                  <option value="Avançado">Avançado</option>
+              </select>
+          </label>
+          <div>
+            <button type="submit" className='saveBut'>Salvar Mudanças</button>
+            <button onClick={()=>deleteTech()} className='delTech'>Deletar</button>
+          </div>
+        </div>
+      </form>
+    </ChangePopup>
 
     
     </>
