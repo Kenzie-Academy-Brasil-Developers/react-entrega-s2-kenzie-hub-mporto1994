@@ -7,15 +7,33 @@ export const ContainerS = styled.div`
     height:100vh;
     background-color:var(--Grey-4);
     display:flex;
+    
     align-items:center;
     justify-content:center;
-    flex-direction:column;
+    flex-direction:column; 
+
+    > :first-child{
+        padding:30px 0;
+    }
     
+    .title {
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content:space-between;
+        
+        #Voltar{
+        width:80px;
+        height:25px;
+        background-color:var(--Grey-3);
+        }
+    }
+
     >*{
     display:flex;
     flex-direction:column;
     width:296px;
-    padding:42px 0px;
+    padding:0px 0px;
     
     }
     > :last-child{

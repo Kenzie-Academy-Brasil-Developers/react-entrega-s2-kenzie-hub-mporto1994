@@ -40,8 +40,12 @@ const Register = ({auth}) => {
 
     return(
         <Container>
-            <h1>Kenzie Hub</h1>
+                <div className="title">
+                    <h1>Kenzie Hub</h1>
+                    <button id="Voltar" onClick={()=>history.push("./")}>Voltar</button> 
+                </div>
             <RegisterDivS>
+                
                 <h2>Crie sua Conta</h2>
                 <span>Rápido e grátis, vamos nessa</span>
                 <form onSubmit={handleSubmit(applyRegister)}>
